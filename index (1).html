@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriPlan - Food, Nutrition & Fitness Planner</title>
-    <link rel="icon" href="./src/images/favicon.png">
+    <link rel="icon" href="images/favicon.png">
     <script>
       window.FontAwesomeConfig = { autoReplaceSvg: "nest" };
     </script>
@@ -22,8 +22,8 @@
       rel="stylesheet"
     />
     <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="./src/css/index.css" />
-    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="bg-gray-50 font-sans">
     <!-- Loading Overlay -->
@@ -95,6 +95,7 @@
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 bg-emerald-50 text-emerald-700 rounded-lg transition-all"
                 href="#"
+                id="meals-link"
               >
                 <i class="fa-solid fa-utensils w-5"></i>
                 <span class="font-semibold">Meals & Recipes</span>
@@ -104,6 +105,7 @@
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
                 href="#"
+                id="products-link"
               >
                 <i class="fa-solid fa-barcode w-5"></i>
                 <span class="font-medium">Product Scanner</span>
@@ -113,6 +115,7 @@
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
                 href="#"
+                id="foodlog-link"
               >
                 <i class="fa-solid fa-clipboard-list w-5"></i>
                 <span class="font-medium">Food Log</span>
@@ -151,10 +154,10 @@
               </button>
               <div>
                 <h1 class="text-2xl font-bold text-gray-900">
-                  Meals & Recipes
+                 
                 </h1>
                 <p class="text-sm text-gray-500 mt-1">
-                  Discover delicious and nutritious recipes tailored for you
+              
                 </p>
               </div>
             </div>
@@ -181,16 +184,12 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-3 overflow-x-auto pb-2">
+          <div class="flex items-center gap-3 overflow-x-auto pb-2" id="cuisines">
             <button
-              class="px-4 py-2 bg-emerald-600 text-white rounded-full font-medium text-sm whitespace-nowrap hover:bg-emerald-700 transition-all"
+              id="allCuisineBtn"
+              class="cuisineBtn px-4 py-2 bg-emerald-600 text-white rounded-full font-medium text-sm whitespace-nowrap hover:bg-emerald-700 transition-all"
             >
-              All Recipes
-            </button>
-            <button
-              class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium text-sm whitespace-nowrap hover:bg-gray-200 transition-all"
-            >
-              Egyptain
+              All Cuisine
             </button>
           </div>
         </div>
@@ -216,21 +215,7 @@
 
           <div id="categories-grid" class="grid grid-cols-6 gap-3">
             <!-- Categories will be loaded here by JavaScript -->
-            <div
-              class="category-card bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-3 border border-emerald-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group"
-              data-category="Beef"
-            >
-              <div class="flex items-center gap-2.5">
-                <div
-                  class="text-white w-9 h-9 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm"
-                >
-                  <i class="fa-solid fa-drumstick-bite"></i>
-                </div>
-                <div>
-                  <h3 class="text-sm font-bold text-gray-900">Beef</h3>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </section>
@@ -266,51 +251,7 @@
 
           <div id="recipes-grid" class="grid grid-cols-4 gap-5">
             <!-- Recipes will be loaded here by JavaScript -->
-            <div
-              class="recipe-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group"
-              data-meal-id="52772"
-            >
-              <div class="relative h-48 overflow-hidden">
-                <img
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
-                  alt="Teriyaki Chicken Casserole"
-                  loading="lazy"
-                />
-                <div class="absolute bottom-3 left-3 flex gap-2">
-                  <span
-                    class="px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-semibold rounded-full text-gray-700"
-                  >
-                    Chicken
-                  </span>
-                  <span
-                    class="px-2 py-1 bg-emerald-500 text-xs font-semibold rounded-full text-white"
-                  >
-                    Japanese
-                  </span>
-                </div>
-              </div>
-              <div class="p-4">
-                <h3
-                  class="text-base font-bold text-gray-900 mb-1 group-hover:text-emerald-600 transition-colors line-clamp-1"
-                >
-                  Teriyaki Chicken Casserole
-                </h3>
-                <p class="text-xs text-gray-600 mb-3 line-clamp-2">
-                  Delicious recipe to try!
-                </p>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="font-semibold text-gray-900">
-                    <i class="fa-solid fa-utensils text-emerald-600 mr-1"></i>
-                    Chicken
-                  </span>
-                  <span class="font-semibold text-gray-500">
-                    <i class="fa-solid fa-globe text-blue-500 mr-1"></i>
-                    Japanese
-                  </span>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -327,7 +268,7 @@
           </button>
 
           <!-- Hero Section -->
-          <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+          <!-- <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
             <div class="relative h-80 md:h-96">
               <img
                 src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
@@ -371,7 +312,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Action Buttons -->
           <div class="flex flex-wrap gap-3 mb-8">
@@ -1183,6 +1124,6 @@
     </div>
 
     <!-- Main JavaScript Entry Point -->
-    <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
