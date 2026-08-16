@@ -1,12 +1,13 @@
-const mealSection = document.getElementById("all-recipes-section");
-const productsSection = document.getElementById("products-section");
-const foodLogSection = document.getElementById("foodlog-section");
-let categorySection = document.getElementById("meal-categories-section");
-let searchSection = document.getElementById("search-filters-section");
+export const mealSection = document.getElementById("all-recipes-section");
+export const productsSection = document.getElementById("products-section");
+export const foodLogSection = document.getElementById("foodlog-section");
+export const mealDetailSection = document.getElementById("meal-details")
+export let categorySection = document.getElementById("meal-categories-section");
+export let searchSection = document.getElementById("search-filters-section");
 export const mealbtn = document.getElementById("meals-link");
-const productbtn = document.getElementById("products-link");
-const foodlogbtn = document.getElementById("foodlog-link");
-
+export const productbtn = document.getElementById("products-link");
+export const foodlogbtn = document.getElementById("foodlog-link");
+import { refreshFoodLogUI } from "./displayLoggedFood.js";
 
      document.querySelectorAll("section").forEach(element => {
         element.classList.add("hidden");
@@ -50,6 +51,7 @@ productbtn.addEventListener("click",()=>{
     categorySection.classList.add("hidden");
     searchSection.classList.add("hidden");
     mealSection.classList.add("hidden");
+    mealDetailSection.classList.add("hidden");
     setActiveButton(productbtn);
     document.querySelector("#header h1").innerHTML = "Product Scanner"
     document.querySelector("#header p").innerHTML = "Search packaged foods by name or barcode"
@@ -60,10 +62,35 @@ foodlogbtn.addEventListener("click",()=>{
     foodLogSection.classList.remove("hidden");
     categorySection.classList.add("hidden");
     searchSection.classList.add("hidden");
+    mealDetailSection.classList.add("hidden")
     mealSection.classList.add("hidden");
     setActiveButton(foodlogbtn);
         document.querySelector("#header h1").innerHTML = "Food Log"
     document.querySelector("#header p").innerHTML = "Track your daily nutrition and food intake"
+    refreshFoodLogUI();
 });
 
 
+//  toggle
+document.getElementById("header-menu-btn").addEventListener("click", () => {
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebar-overlay");
+    
+    sidebar.classList.toggle("open");
+    overlay.classList.toggle("active");
+    document.body.classList.toggle("sidebar-open");
+});
+
+// Close button
+document.getElementById("sidebar-close-btn").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("sidebar-overlay").classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+});
+
+
+document.getElementById("sidebar-overlay").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("sidebar-overlay").classList.remove("active");
+    document.body.classList.remove("sidebar-open");
+});

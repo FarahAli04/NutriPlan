@@ -13,8 +13,8 @@ export function searchMeals() {
         }
         const response = await fetch(`https://nutriplan-api.vercel.app/api/meals/search?q=${searchTerm}&page=1&limit=25`);
         const data = await response.json();
-            const recipesCount = document.getElementById("recipes-count");
-    recipesCount.innerHTML = `Showing ${data.results.length} recipes for "${searchTerm}"`;
+        const recipesCount = document.getElementById("recipes-count");
+         recipesCount.innerHTML = `Showing ${data.results.length} recipes for "${searchTerm}"`;
         displayRecipes(data.results);
     });
 }

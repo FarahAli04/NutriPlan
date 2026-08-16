@@ -2,7 +2,7 @@
 export async function fetchMeals() {
     const response = await fetch("https://nutriplan-api.vercel.app/api/meals/search?q=chicken&page=1&limit=25");
     const MealData = await response.json();
-    console.log(MealData.results);
+    // console.log(MealData.results);
     return MealData.results;
 }
 
@@ -18,4 +18,11 @@ const availableCuisine = await fetch(`https://nutriplan-api.vercel.app/api/meals
 const data = await availableCuisine.json();
 // mapping !!!
  return data.results.map(category => category.name).slice(0,12);
+}
+
+// MealByID
+export async function fetchMealById(mealId){
+   const response = await fetch(`https://nutriplan-api.vercel.app/api/meals/${mealId}`);
+    const responseData = await response.json();
+    return responseData.result;
 }

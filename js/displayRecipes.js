@@ -1,11 +1,26 @@
 import { fetchMeals } from "./api/mealdb.js";
-
+import { spinnerHTML } from "./loadingOverlay.js";
 export async function displayRecipes(recipes = null) {
+   const grid = document.getElementById("recipes-grid");
+   grid.innerHTML = spinnerHTML();
     if (!recipes) {
         recipes = await fetchMeals();
     }
-    const grid = document.getElementById("recipes-grid");
+    
+   
     grid.innerHTML = ``;
+      if (recipes.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full flex flex-col items-center justify-center py-12 text-center">
+                <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-search text-gray-400 text-2xl"></i>
+                </div>
+                <p class="text-gray-500 text-lg">No recipes found</p>
+                <p class="text-gray-400 text-sm mt-2">Try searching for something else</p>
+            </div>
+        `;
+        return;
+    }
     recipes.forEach(element => {
         grid.innerHTML += `<div
               class="recipe-card bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer group"
